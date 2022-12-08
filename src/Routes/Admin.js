@@ -14,6 +14,8 @@ router.post("/addadmin" , adminController.addadmin)
 router.post("/addSubject" ,adminController.addSubject)
 router.get("/getsubject" ,adminController.getSubject)
 
+router.get("/allcourses" , adminController.getCourses)
+
 
 
 

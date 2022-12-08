@@ -13,7 +13,9 @@ router.get("/viewcourse",guestController.getcourses)
 
 router.post('/addcourse', instructorController.AddCourse)
 
-router.get("/mycourse",instructorController.getMycourses)
+router.get("/dashboard/:id",instructorController.getMycourses)
+
+router.get('/get' , instructorController.getme)
 
 
 

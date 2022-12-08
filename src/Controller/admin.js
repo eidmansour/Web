@@ -2,6 +2,7 @@ const instructor = require("../Schema/instructor")
 const admin = require("../Schema/Admin")
 const cortrainee = require("../Schema/cor_trainee")
 const Subject = require("../Schema/courseSubject")
+const Course = require("../Schema/courses")
 
 
 
@@ -90,7 +91,32 @@ catch(error){
     res.status(400).json({errorMessage : "Try again later"})
 }
 }
+  
+
+const getCourses = async (req , res ) => {
+
+    try {
+
+        const courses = await Course.find({}).lean()
+        for (var i =0 ; i<courses.length ; i++){
+            const temp = await Subject.findById(courses[i].Subject)
+           
+            const sub = temp.subject 
+            courses[i].Subject = sub
+           
+
+        }
+        
+
+        res.status(200).json(courses)
+
+
+    }
+    catch(error){
+        res.status(400).json({error: error.message})
+   }
+}
 
 
 
-module.exports = {addinstructor , addcortrainee , addadmin , addSubject ,getSubject}
+module.exports = {addinstructor , addcortrainee , addadmin , addSubject ,getSubject , getCourses}

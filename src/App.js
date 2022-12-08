@@ -12,6 +12,8 @@ const instructorRoutes = require("./Routes/instructos")
 
 const adminRoutes = require("./Routes/Admin")
 
+const changePasswordRoutes = require("./Routes/changingpassword")
+
 const cortraineeRoutes = require("./Routes/corTrainee")
 
 const guestRoutes  = require("./Routes/guest")
@@ -57,6 +59,8 @@ app.use ("/guest" , guestRoutes);
 app.use("/signup",signupValidator,validatorResult );
 app.use("/signup", signupRoutes);
 app.use("/signin",signinRoutes);
+
+app.use('/change',changePasswordRoutes)
 // app.use("/signin",signinValidator,signinValidatorResult );
 
 

@@ -6,7 +6,10 @@ const bycrpt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const {jwtSecret , jwtExpire} = require("../config/keys")
 
+const createToken = (_id) => {
 
+     return jwt.sign({_id} , "SEC" , {expiresIn : '2d'}) 
+}
 
 
 
@@ -46,7 +49,7 @@ const instructorSignin =  async (req , res ) => {
 
               res.json({
                 token,
-                inst : {_id , username ,email ,role}
+                inst : {_id , username ,email ,role}, id:inst._id
                 
               })
            

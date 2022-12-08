@@ -2,6 +2,11 @@ const instructor = require("../Schema/instructor")
 const admin = require("../Schema/Admin")
 const individual = require("../Schema/Individual") 
 const bycrpt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const createToken = (_id) => {
+
+    return jwt.sign({_id} , "SEC" , {expiresIn : '2d'}) 
+}
 
 const instructorSignup =  async (req , res ) => {
     const {username , email,password} =  req.body; 
@@ -20,8 +25,11 @@ const instructorSignup =  async (req , res ) => {
         newInstructor.password= await bycrpt.hash(password, salt)
 
         await newInstructor.save();
+
+        const token = createToken(newInstructor._id)
+
         res.status(200).json({
-            successMessage:"registration success. please signin"
+            successMessage:"registration success. please signin", token
         })
 
     }
@@ -49,8 +57,12 @@ const individualSignup =  async (req , res ) => {
         newInd.password= await bycrpt.hash(password, salt)
 
         await newInd.save();
+
+        const token = createToken(newInd._id)
+
+
         res.json({
-            successMessage:"registration success. please signin"
+            successMessage:"registration success. please signin" , token
         })
 
     }
@@ -76,8 +88,10 @@ const individualSignup =  async (req , res ) => {
         newAdmin.password= await bycrpt.hash(password, salt)
 
         await newAdmin.save();
+        const token = createToken(newAdmin._id)
+
         res.json({
-            successMessage:"registration success. please signin"
+            successMessage:"registration success. please signin" , token
         })
 
     }

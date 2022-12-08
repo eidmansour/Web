@@ -9,24 +9,16 @@ Title : {
     required: true, 
 },
 Subtitles: {
-    FirstWeek :{
-        type :String,
-    },
-    SecondWeek : {
-        type:String,
-    },
-    ThirdWeek:{
-        type:String,
-    },
-    forthWeek:{
-        type:String,
-    }
+    type : mongoose.Schema.Types.ObjectId, 
+    required :false, 
+    ref : 'subTitle'
 
 },
 
 Rating : {
-    type : Number, 
+    type : String, 
     required: false,
+    default : "Not Rated Yet"
     
 }, 
 
