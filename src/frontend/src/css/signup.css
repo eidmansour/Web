@@ -1,0 +1,16 @@
+.signup-container{
+    background-image: url('../Images/si.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+.signin-container{
+    background-image: url('../Images/signin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+ 
